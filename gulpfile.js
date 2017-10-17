@@ -4,11 +4,13 @@ const browsersync = require('browser-sync').create()
 
 const buildCommand = process.env.BUILD
                 || `docker run --rm -t -v ${__dirname}/documents:/documents suttang/sphinx-rtd-theme`
+const srcPath = process.env.SRC || './documents/source'
+const distPath = process.env.DIST || './documents/build'
 
 gulp.task('browser-sync', () => {
     browsersync.init({
         server: {
-            baseDir: './documents/build',
+            baseDir: distPath,
         }
     })
 })
@@ -30,7 +32,7 @@ gulp.task('html', (cb) => {
 })
 
 gulp.task('watch', () => {
-    gulp.watch('documents/source/**/*', ['html'])
+    gulp.watch(`${srcPath}/**/*`, ['html'])
 })
 
 gulp.task('default', ['browser-sync', 'html', 'watch'])
