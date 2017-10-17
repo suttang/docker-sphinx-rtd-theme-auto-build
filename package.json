@@ -4,10 +4,10 @@
   "description": "## Install",
   "main": "gulpfile.js",
   "scripts": {
-    "postinstall": "docker run --rm -it -v $(pwd)/documents:/documents suttang/sphinx-rtd /scripts/init.sh",
+    "postinstall": "docker run --rm -it -v $(pwd)/documents:/documents suttang/sphinx-rtd-theme /scripts/init.sh",
     "build:dev": "gulp",
-    "build:prod": "docker run --rm -it -v $(pwd)/documents:/documents/ suttang/sphinx-rtd sphinx-build -b html source build -a",
-    "login": "docker run --rm -it suttang/sphinx-rtd /bin/sh"
+    "build:prod": "docker run --rm -it -v $(pwd)/documents:/documents/ suttang/sphinx-rtd-theme sphinx-build -b html source build -a",
+    "login": "docker run --rm -it suttang/sphinx-rtd-theme /bin/sh"
   },
   "repository": {
     "type": "git",
